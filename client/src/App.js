@@ -1,16 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'
-
-
-
 import 'react-toastify/dist/ReactToastify.css';
-
-import shortid from 'shortid';
-import { useDispatch } from 'react-redux';
-// import Container from './components/Container/Container';
 import useStyles from './styles'
 import Form from './components/Form/Form';
-
 import List from './components/List/List';
 
 
