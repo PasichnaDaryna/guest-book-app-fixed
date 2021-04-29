@@ -1,36 +1,44 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+
+import { getContacts } from "../../selectors/contacts";
+import * as ContactOperations from "../../operations/contacts";
+
+
+
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import useStyles from './styles';
 
-import FileBase from 'react-file-base64';
-
-import shortid from 'shortid';
-import { useDispatch } from 'react-redux'
-import { createContact } from '../../actions/contacts';
 
 
 
 
 
-function Form({ onSubmit }) {
-
-
-    const [name, setName] = useState('');
-    const [message, setMessage] = useState('');
-
-    const dispatch = useDispatch()
 
 
 
-    const handleChange = e => {
+
+
+function Form() {
+
+
+    const dispatch = useDispatch();
+    const contacts = useSelector(getContacts);
+    const [name, setName] = useState("");
+    const [message, setMessage] = useState("");
+
+    const classes = useStyles();
+
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
 
         switch (name) {
-            case 'name':
+            case "name":
                 setName(value);
                 break;
 
-            case 'message':
+            case "message":
                 setMessage(value);
                 break;
 
@@ -39,19 +47,19 @@ function Form({ onSubmit }) {
         }
     };
 
-    const classes = useStyles();
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit(name, message);
-        // dispatch(createContact(name, message))
+
+        dispatch(ContactOperations.addContact(name, message));
         resetInput();
     };
 
     const resetInput = () => {
-        setName('');
-        setMessage('');
+        setName("");
+        setMessage("");
     };
+
 
     return (
         <Paper className={classes.paper}>

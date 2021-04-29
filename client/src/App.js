@@ -12,46 +12,10 @@ import useStyles from './styles'
 import Form from './components/Form/Form';
 
 import List from './components/List/List';
-import { getContacts } from './actions/contacts'
+
 
 function App() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(localStorage.getItem('contacts')) ?? [];
-  });
-
-  useEffect(() => {
-    dispatch(getContacts())
-  }, [dispatch]);
-
-  const [filter, setFilter] = useState('');
-
-  const addContact = (name, message) => {
-    const contact = {
-      id: shortid.generate(),
-      name,
-      message,
-    };
-
-
-    setContacts(prevContacts =>
-      [contact, ...prevContacts].sort((a, b) => {
-
-        return 0;
-      }),
-    );
-
-  };
-
-
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter),
-    );
-  };
 
   return (
     <Container maxWidth="lg">
@@ -63,12 +27,12 @@ function App() {
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={4}>
-              <Form onSubmit={addContact} />
+              <Form />
 
             </Grid>
             <Grid item xs={12} sm={7}>
               <List
-                contacts={getVisibleContacts()}
+
 
               />
             </Grid>

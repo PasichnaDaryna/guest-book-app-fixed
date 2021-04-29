@@ -1,17 +1,23 @@
 import React from 'react';
 
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 
-import Form from "../Form/Form"
-import { Grid, CircularProgress } from '@material-ui/core';
+import * as ContactOperations from "../../operations/contacts";
+import { getContacts } from "../../selectors/contacts";
+import { Grid } from '@material-ui/core';
 
 import useStyles from './styles'
 
 
 
-function List({ contacts }) {
+function List() {
+
+
+    const contacts = useSelector(getContacts);
 
     const classes = useStyles();
+
+
     return (
         < Grid className={classes.container} container alignItems="stretch" spacing={3}>
             {contacts.map(({ id, name, message }) => (

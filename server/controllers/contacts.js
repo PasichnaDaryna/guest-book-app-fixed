@@ -2,6 +2,8 @@ import ContactMessage from '../model/contactMessage.js'
 
 export const getContacts = async (req, res) => {
 
+
+
     try {
         const contactMessages = await ContactMessage.find();
 
@@ -17,10 +19,10 @@ export const getContacts = async (req, res) => {
 }
 
 
-export const createContact = async (req, res) => {
-    const { name, message } = req.body;
+export const addContact = async (req, res) => {
+    const { id, name, message } = req.body;
 
-    const newContactMessage = new ContactMessage({ name, message })
+    const newContactMessage = new ContactMessage({ id, name, message })
     try {
         await newContactMessage.save();
 
