@@ -10,7 +10,7 @@ import {
 } from '../actions/contacts';
 
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://polar-forest-80707.herokuapp.com";
 
 export const fetchContacts = () => async (dispatch) => {
     dispatch(fetchContactRequest());
