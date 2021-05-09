@@ -7,7 +7,7 @@ import {
     fetchContactRequest,
     fetchContactSuccess,
     fetchContactError,
-} from '../actions/contacts';
+} from './contacts-actions';
 
 
 axios.defaults.baseURL = "https://polar-forest-80707.herokuapp.com";
@@ -44,6 +44,6 @@ export const addContact = (name, message) => (dispatch) => {
 
 export default {
     fetchContacts,
-    addContact,
+    addContact
 
 };

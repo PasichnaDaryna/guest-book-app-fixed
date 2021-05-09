@@ -8,13 +8,13 @@ import {
     addContactRequest,
     addContactSuccess,
     addContactError,
-} from '../actions/contacts'
+} from './contacts-actions'
 
 
 
 const items = createReducer([], {
     [fetchContactSuccess]: (state, { payload }) => payload,
-    [addContactSuccess]: (state, { payload }) => [...state, payload],
+    [addContactSuccess]: (state, { payload }) => [payload, ...state],
 
 });
 
@@ -38,3 +38,5 @@ export default combineReducers({
     loading,
     error,
 });
+
+

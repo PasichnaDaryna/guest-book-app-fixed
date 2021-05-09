@@ -1,4 +1,4 @@
-import * as api from '../api'
+// import * as api from '../../api/index'
 
 import { createAction } from "@reduxjs/toolkit";
 
@@ -10,6 +10,8 @@ export const fetchContactRequest = createAction(
 export const fetchContactSuccess = createAction(
     "contacts/fetchcontactsSuccess"
 );
+
+
 export const fetchContactError = createAction("contacts/fetchContactsError");
 
 export const addContactRequest = createAction("contacts/addContactRequest");

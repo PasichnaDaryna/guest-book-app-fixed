@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
-import { getContacts } from "../../selectors/contacts";
-import * as ContactOperations from "../../operations/contacts";
+import { getAllContacts } from "../../redux/contacts/contacts-selectors";
+import * as ContactOperations from "../../redux/contacts/contacts-operations";
 
 
 
@@ -10,20 +10,11 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import useStyles from './styles';
 
 
-
-
-
-
-
-
-
-
-
 function Form() {
 
 
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
+
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
 
