@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './redux/configureStore';
+import { store } from './redux/configureStore';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { persistStore } from 'redux-persist';
+
+let persistor = persistStore(store);
 
 
 ReactDOM.render(
