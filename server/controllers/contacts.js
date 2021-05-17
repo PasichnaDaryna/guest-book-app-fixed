@@ -1,11 +1,8 @@
 import ContactMessage from '../model/contactMessage.js'
 
 export const getContacts = async (req, res) => {
-
-
-
     try {
-        const contactMessages = await ContactMessage.find();
+        const contactMessages = await ContactMessage.find({});
 
         console.log(contactMessages)
 
@@ -17,8 +14,6 @@ export const getContacts = async (req, res) => {
     }
 
 }
-
-
 export const addContact = async (req, res) => {
     const { id, name, message } = req.body;
 

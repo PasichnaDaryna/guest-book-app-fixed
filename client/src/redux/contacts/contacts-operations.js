@@ -10,13 +10,14 @@ import {
 } from './contacts-actions';
 
 
-axios.defaults.baseURL = "https://polar-forest-80707.herokuapp.com";
+axios.defaults.baseURL = "/contacts";
 
 export const fetchContacts = () => async (dispatch) => {
+    console.log(1)
     dispatch(fetchContactRequest());
 
     try {
-        const { data } = await axios.get("/contacts");
+        const { data } = await axios.get("/");
 
         dispatch(fetchContactSuccess(data));
     } catch (error) {
@@ -25,6 +26,7 @@ export const fetchContacts = () => async (dispatch) => {
 };
 
 export const addContact = (name, message) => (dispatch) => {
+    console.log(2)
     const contact = {
         name,
         message,
@@ -32,7 +34,7 @@ export const addContact = (name, message) => (dispatch) => {
     dispatch(addContactRequest);
 
     axios
-        .post("/contacts", contact)
+        .post("/", contact)
         .then(({ data }) => dispatch(addContactSuccess(data)))
         .catch((error) => dispatch(addContactError(error)));
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import { getAllContacts } from "../../redux/contacts/contacts-selectors";
@@ -18,8 +18,13 @@ function Form() {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
 
-    const classes = useStyles();
+    useEffect(() => {
+        dispatch(ContactOperations.fetchContacts());
+        console.log(3)
 
+    })
+
+    const classes = useStyles();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -41,7 +46,7 @@ function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        // operation for get
         dispatch(ContactOperations.addContact(name, message));
         resetInput();
     };

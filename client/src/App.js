@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'
-import 'react-toastify/dist/ReactToastify.css';
+
 import useStyles from './styles'
 import Form from './components/Form/Form';
 import List from './components/List/List';
