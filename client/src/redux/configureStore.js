@@ -71,28 +71,3 @@ export const store = configureStore({
 
 
 
-// export default store;
-
-
-
-
-
-
-// const middleware = [
-//     ...getDefaultMiddleware({
-//         serializableCheck: {
-//             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//         },
-//     }),
-//     logger,
-// ];
-
-// export const store = configureStore({
-//     reducer: {
-//         contacts: contactsReducer,
-//     },
-//     middleware,
-//     devTools: process.env.NODE_ENV === 'development',
-// });
-
-// export const persistor = persistStore(store);
