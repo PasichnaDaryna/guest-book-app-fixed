@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify"
 
 import { getAllContacts } from "../../redux/contacts/contacts-selectors";
 import * as ContactOperations from "../../redux/contacts/contacts-operations";
@@ -43,12 +44,23 @@ function Form() {
         }
     };
 
+    const checkEmptyQuery = (name, message) => {
+        return name.trim() === '' || message.trim() === '';
+    };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // operation for get
-        dispatch(ContactOperations.addContact(name, message));
-        resetInput();
+
+        if (checkEmptyQuery(name, message)) {
+            toast.info(' Enter the correct name and number!');
+        } else if (message != "" && message.length < 5) {
+            toast.info(' Minimal message lenth is 5 characters!')
+        } else {
+            dispatch(ContactOperations.addContact(name, message));
+            resetInput();
+        }
+
     };
 
     const resetInput = () => {
